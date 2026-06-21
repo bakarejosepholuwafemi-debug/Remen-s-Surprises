@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Flier – Lowo & Adeshina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Dancing+Script:wght@700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(180,0,255,0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 70%, rgba(255,80,180,0.3) 0%, transparent 55%),
+        radial-gradient(ellipse at 55% 10%, rgba(0,180,255,0.18) 0%, transparent 50%),
+        linear-gradient(145deg,
+          #06000f 0%,
+          #120035 18%,
+          #2a0050 35%,
+          #3d0070 50%,
+          #1e003a 65%,
+          #060018 82%,
+          #000009 100%);
+      background-attachment: fixed;
+      font-family: 'Cormorant Garamond', serif;
+      padding: 30px 16px;
+      overflow-x: hidden;
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatUp 8s infinite ease-in;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(110vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+    .particle:nth-child(1)  { left:5%;  width:8px;  height:8px;  background:#f5c6ea; animation-delay:0s;   animation-duration:9s; }
+    .particle:nth-child(2)  { left:15%; width:5px;  height:5px;  background:#ffd700; animation-delay:1s;   animation-duration:8s; }
+    .particle:nth-child(3)  { left:25%; width:10px; height:10px; background:#e8b4cb; animation-delay:2s;   animation-duration:10s;}
+    .particle:nth-child(4)  { left:35%; width:6px;  height:6px;  background:#c9b1ff; animation-delay:0.5s; animation-duration:7s; }
+    .particle:nth-child(5)  { left:45%; width:9px;  height:9px;  background:#ffd700; animation-delay:3s;   animation-duration:9s; }
+    .particle:nth-child(6)  { left:55%; width:5px;  height:5px;  background:#f5c6ea; animation-delay:1.5s; animation-duration:11s;}
+    .particle:nth-child(7)  { left:65%; width:7px;  height:7px;  background:#c9b1ff; animation-delay:2.5s; animation-duration:8s; }
+    .particle:nth-child(8)  { left:75%; width:11px; height:11px; background:#e8b4cb; animation-delay:0.8s; animation-duration:9s; }
+    .particle:nth-child(9)  { left:85%; width:4px;  height:4px;  background:#ffd700; animation-delay:4s;   animation-duration:7s; }
+    .particle:nth-child(10) { left:92%; width:8px;  height:8px;  background:#f5c6ea; animation-delay:1.2s; animation-duration:10s;}
+    .particle:nth-child(11) { left:10%; width:14px; height:14px; background:rgba(180,0,255,0.5); animation-delay:0.3s; animation-duration:13s;}
+    .particle:nth-child(12) { left:50%; width:6px;  height:6px;  background:#ff80d5; animation-delay:2.2s; animation-duration:11s;}
+    .particle:nth-child(13) { left:70%; width:12px; height:12px; background:rgba(255,215,0,0.6); animation-delay:3.5s; animation-duration:9s;}
+
+    /* Aurora glow layers fixed behind everything */
+    .aurora {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .aurora-band {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.22;
+      animation: auroraMove 14s ease-in-out infinite alternate;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+    .aurora-band:nth-child(1) {
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, #b800ff, transparent 70%);
+      top: -80px; left: -100px;
+      animation-duration: 16s;
+    }
+    .aurora-band:nth-child(2) {
+      width: 500px; height: 250px;
+      background: radial-gradient(ellipse, #ff3ea5, transparent 70%);
+      bottom: -60px; right: -80px;
+      animation-duration: 12s; animation-delay: 2s;
+    }
+    .aurora-band:nth-child(3) {
+      width: 400px; height: 200px;
+      background: radial-gradient(ellipse, #00c8ff, transparent 70%);
+      top: 40%; left: 40%;
+      animation-duration: 18s; animation-delay: 4s;
+    }
+    @keyframes auroraMove {
+      0%   { transform: translate(0,0) scale(1);    opacity:0.22; }
+      50%  { transform: translate(40px,-30px) scale(1.15); opacity:0.3; }
+      100% { transform: translate(-20px, 20px) scale(0.9);  opacity:0.18; }
+    }
+
+    /* ─── CARD ─── */
+    .card {
+      position: relative;
+      z-index: 1;
+      max-width: 750px;
+      width: 100%;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow:
+        0 0 80px rgba(200,100,200,0.35),
+        0 0 160px rgba(255,215,0,0.2),
+        0 30px 60px rgba(0,0,0,0.6);
+      animation: cardAppear 1.2s ease forwards;
+    }
+    @keyframes cardAppear {
+      from { opacity:0; transform: scale(0.92) translateY(30px); }
+      to   { opacity:1; transform: scale(1)  translateY(0);     }
+    }
+
+    /* Photo background layer – fills the entire card */
+    .card-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('couple_photo.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+      filter: blur(3px) brightness(0.35) saturate(1.2);
+      transform: scale(1.05); /* prevent blur edge gaps */
+      z-index: 0;
+    }
+
+    /* Gold shimmer border top */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #ff6ec7, #ffd700, #ff6ec7, #c084fc, #ffd700, #ff6ec7);
+      background-size: 300% 100%;
+      animation: shimmer 4s linear infinite;
+      z-index: 10;
+    }
+    /* Gold shimmer border bottom */
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #c084fc, #ffd700, #ff6ec7, #c084fc);
+      background-size: 300% 100%;
+      animation: shimmer 4s linear infinite;
+      z-index: 10;
+    }
+    @keyframes shimmer {
+      0%   { background-position: 0%   50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    /* Content wrapper sits above the bg layer */
+    .card-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ─── Top banner ─── */
+    .banner {
+      background: linear-gradient(135deg,
+        rgba(74,0,112,0.85) 0%,
+        rgba(123,31,162,0.80) 40%,
+        rgba(233,30,140,0.70) 70%,
+        rgba(255,110,199,0.65) 100%);
+      padding: 32px 24px 24px;
+      text-align: center;
+      position: relative;
+      backdrop-filter: blur(4px);
+    }
+    .banner::after {
+      content: '';
+      position: absolute;
+      bottom: -18px; left: 0; right: 0;
+      height: 36px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 36'%3E%3Cpath fill='rgba(74,0,112,0.85)' d='M0,36 C300,0 900,0 1200,36 L1200,0 L0,0 Z'/%3E%3C/svg%3E") no-repeat center/cover;
+    }
+
+    .join-text {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.85);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .heart-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 6px 0 10px;
+    }
+    .heart-divider span:first-child,
+    .heart-divider span:last-child {
+      display: block;
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6));
+    }
+    .heart-divider span:last-child {
+      background: linear-gradient(90deg, rgba(255,255,255,0.6), transparent);
+    }
+    .heart-icon {
+      font-size: 1.4rem;
+      animation: heartPulse 1.5s ease-in-out infinite;
+    }
+    @keyframes heartPulse {
+      0%, 100% { transform: scale(1);   }
+      50%       { transform: scale(1.25); }
+    }
+
+    .wedding-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      color: #fff;
+      text-shadow:
+        0 0 30px rgba(255,215,0,0.9),
+        0 0 60px rgba(255,110,199,0.6),
+        2px 2px 4px rgba(0,0,0,0.6);
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    /* ─── Card body ─── */
+    .card-body {
+      padding: 50px 36px 0;
+      text-align: center;
+    }
+
+    /* Names block */
+    .names-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .name-block { flex: 1; min-width: 180px; }
+    .name-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      color: #e0a0ff;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .name-main {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.15rem, 2.8vw, 1.6rem);
+      font-weight: 700;
+      font-style: normal;
+      color: #ffd700;
+      text-shadow:
+        0 0 12px rgba(255,215,0,1),
+        0 0 30px rgba(255,215,0,0.8),
+        0 0 55px rgba(255,180,0,0.5),
+        2px 2px 6px rgba(0,0,0,0.7);
+      line-height: 1.35;
+      letter-spacing: 0.06em;
+    }
+    .name-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+      margin-top: 2px;
+    }
+
+    .ampersand {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      color: #ff6ec7;
+      text-shadow: 0 0 25px rgba(255,110,199,0.8), 0 2px 8px rgba(0,0,0,0.5);
+      line-height: 1;
+      animation: heartPulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    /* Gold rule */
+    .gold-rule {
+      border: none;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #ffd700, transparent);
+      margin: 20px auto;
+      max-width: 560px;
+    }
+
+    /* Date section */
+    .date-section {
+      background: linear-gradient(135deg,
+        rgba(255,215,0,0.12) 0%,
+        rgba(200,100,200,0.18) 50%,
+        rgba(255,215,0,0.12) 100%);
+      border: 1px solid rgba(255,215,0,0.35);
+      border-radius: 16px;
+      padding: 18px 28px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+    .date-section::before {
+      content: '💍';
+      position: absolute;
+      top: -10px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.4rem;
+      background: transparent;
+      padding: 0 8px;
+    }
+    .date-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      color: #d9a0ff;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .date-main {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255,215,0,0.7), 0 2px 6px rgba(0,0,0,0.5);
+    }
+    .date-year {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: #ffd700;
+      text-shadow: 0 0 15px rgba(255,215,0,0.6);
+    }
+
+    /* Icons row */
+    .icons-row {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      font-size: 1.5rem;
+      margin: 14px 0;
+    }
+
+    /* ─── COUPLE PHOTO SECTION ─── */
+    .photo-section {
+      position: relative;
+      width: 100%;
+      margin-top: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+
+    /* Glowing pedestal / stage under the couple */
+    .photo-stage {
+      position: absolute;
+      bottom: 0;
+      left: 10%;
+      right: 10%;
+      height: 60px;
+      background: radial-gradient(ellipse at center bottom,
+        rgba(255,215,0,0.4) 0%,
+        rgba(200,100,200,0.2) 40%,
+        transparent 70%);
+      filter: blur(12px);
+    }
+
+    .couple-photo {
+      position: relative;
+      z-index: 2;
+      width: 75%;
+      max-width: 460px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      filter:
+        drop-shadow(0 0 30px rgba(255,215,0,0.5))
+        drop-shadow(0 0 60px rgba(200,100,200,0.35))
+        drop-shadow(0 20px 40px rgba(0,0,0,0.7));
+      animation: gentleFloat 4s ease-in-out infinite;
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+    @keyframes gentleFloat {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    /* Vendor section */
+    .vendor-section {
+      background: linear-gradient(135deg,
+        rgba(74,0,112,0.85) 0%,
+        rgba(123,31,162,0.80) 50%,
+        rgba(74,0,112,0.85) 100%);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(255,215,0,0.3);
+      padding: 14px 20px 18px;
+      text-align: center;
+      margin-top: 0;
+    }
+    .courtesy-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.35em;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .vendor-badge {
+      display: inline-block;
+      padding: 9px 26px;
+      background: linear-gradient(135deg,
+        #b8860b 0%, #ffd700 25%, #fff8dc 50%, #ffd700 75%, #b8860b 100%);
+      background-size: 200% 200%;
+      animation: goldShimmer 3s linear infinite;
+      border-radius: 50px;
+      box-shadow:
+        0 0 18px rgba(255,215,0,0.5),
+        0 0 40px rgba(255,215,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+    }
+    @keyframes goldShimmer {
+      0%   { background-position: 0%   50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0%   50%; }
+    }
+    .vendor-badge-inner {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.75rem, 2vw, 1rem);
+      font-weight: 700;
+      color: #3d1010;
+      letter-spacing: 0.1em;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.5);
+    }
+    .vendor-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.72rem;
+      color: rgba(255,215,0,0.65);
+      margin-top: 6px;
+      letter-spacing: 0.12em;
+      font-style: italic;
+    }
+    .stars-row {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      margin: 5px 0 0;
+    }
+    .star {
+      color: #ffd700;
+      font-size: 0.65rem;
+      animation: twinkle 1.8s ease-in-out infinite;
+    }
+    .star:nth-child(2) { animation-delay: 0.3s; }
+    .star:nth-child(3) { animation-delay: 0.6s; }
+    .star:nth-child(4) { animation-delay: 0.9s; }
+    .star:nth-child(5) { animation-delay: 1.2s; }
+    @keyframes twinkle {
+      0%, 100% { opacity:1; transform:scale(1);    }
+      50%       { opacity:0.4; transform:scale(0.7); }
+    }
+
+    /* ─── RINGS ─── */
+    .rings-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0 14px;
+      font-size: 2rem;
+      animation: ringGlow 2s ease-in-out infinite alternate;
+      will-change: transform, filter;
+      transform: translateZ(0);
+    }
+    @keyframes ringGlow {
+      0%   { filter: drop-shadow(0 0 6px rgba(255,215,0,0.7)); }
+      100% { filter: drop-shadow(0 0 18px rgba(255,215,0,1)) drop-shadow(0 0 32px rgba(255,110,199,0.7)); }
+    }
+
+    /* ─── ADDRESS / DIRECTIONS ─── */
+    .address-section {
+      background: linear-gradient(135deg,
+        rgba(20,0,60,0.85) 0%,
+        rgba(80,0,120,0.80) 50%,
+        rgba(20,0,60,0.85) 100%);
+      border: 1px solid rgba(255,215,0,0.4);
+      border-radius: 20px;
+      margin: 0 28px 22px;
+      padding: 20px 24px 22px;
+      backdrop-filter: blur(10px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .address-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+        rgba(255,215,0,0.06) 0%,
+        transparent 60%,
+        rgba(255,110,199,0.07) 100%);
+      pointer-events: none;
+    }
+    .address-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      color: #ffd700;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      text-shadow: 0 0 10px rgba(255,215,0,0.5);
+    }
+    .address-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+    .address-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      border-left: 3px solid rgba(255,215,0,0.5);
+      transition: background 0.3s;
+    }
+    .address-step:hover { background: rgba(255,255,255,0.1); }
+    .step-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      line-height: 1.2;
+    }
+    .step-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.5;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+    .step-text strong {
+      color: #ffd700;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(255,215,0,0.4);
+    }
+    .step-text em {
+      color: #ff9ee0;
+      font-style: normal;
+      font-size: 0.85rem;
+    }
+    .address-destination {
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: linear-gradient(135deg,
+        rgba(255,215,0,0.15) 0%,
+        rgba(255,110,199,0.1) 100%);
+      border-radius: 12px;
+      border: 1px solid rgba(255,215,0,0.3);
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      color: #fff;
+      letter-spacing: 0.08em;
+      text-shadow: 0 0 12px rgba(255,215,0,0.5);
+    }
+
+    @media (max-width: 500px) {
+      .card-body { padding: 42px 20px 0; }
+      .names-grid { gap: 10px; }
+      .couple-photo { width: 88%; }
+      .address-section { margin: 0 12px 18px; padding: 16px 14px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Aurora glow -->
+<div class="aurora">
+  <div class="aurora-band"></div>
+  <div class="aurora-band"></div>
+  <div class="aurora-band"></div>
+</div>
+
+<!-- Floating particles -->
+<div class="particles">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <div class="particle"></div>
+</div>
+
+<div class="card">
+  <!-- Blurred couple photo fills the entire card as background -->
+  <div class="card-bg"></div>
+
+  <div class="card-content">
+
+    <!-- Top banner -->
+    <div class="banner">
+      <p class="join-text">Together with their families</p>
+      <div class="heart-divider">
+        <span></span>
+        <span class="heart-icon">💕</span>
+        <span></span>
+      </div>
+      <h1 class="wedding-title">Wedding Celebration</h1>
+      <div class="heart-divider" style="margin-top:6px;">
+        <span></span>
+        <span style="font-size:1rem;">🌹</span>
+        <span></span>
+      </div>
+    </div>
+
+    <!-- Card body -->
+    <div class="card-body">
+
+      <!-- Names -->
+      <div class="names-grid">
+        <div class="name-block">
+          <div class="name-label">✦ The Groom ✦</div>
+          <div class="name-main">ADEPEGBA FATAI</div>
+          <div class="name-sub">ADESINA</div>
+        </div>
+
+        <div class="rings-ampersand">
+          <img src="two_real_rings.png" alt="Rings" style="width: 110px; height: auto; mix-blend-mode: screen; filter: drop-shadow(0 0 25px rgba(255,215,0,1)) brightness(1.2); margin: 0 15px; border-radius: 50%;" />
+        </div>
+
+        <div class="name-block">
+          <div class="name-label">✦ The Bride ✦</div>
+          <div class="name-main">OLOLADE OLUWATOFUNMI</div>
+          <div class="name-sub">LOW</div>
+        </div>
+      </div>
+
+      <hr class="gold-rule"/>
+
+      <!-- Icons -->
+      <div class="icons-row">
+        🌺 💒 💍 🥂 🌺
+      </div>
+
+      <!-- Two Rings -->
+      <div class="rings-row" style="display:none;">
+      </div>
+
+      <!-- Date -->
+      <div class="date-section">
+        <div class="date-label">✦ Wedding Date ✦</div>
+        <div class="date-main">Sunday, May 3<sup>rd</sup></div>
+        <div class="date-year">2026</div>
+      </div>
+
+      <hr class="gold-rule"/>
+
+    </div><!-- /card-body -->
+
+    <!-- Couple cut-out photo rising from bottom of card -->
+    <div class="photo-section">
+      <div class="photo-stage"></div>
+      <img
+        src="couple_cutout.png"
+        alt=""
+        class="couple-photo"
+        onerror="this.src='couple_photo.jpg'; this.style.borderRadius='16px'; this.style.filter='drop-shadow(0 0 30px rgba(255,215,0,0.5)) drop-shadow(0 20px 40px rgba(0,0,0,0.7))';"
+      />
+    </div>
+
+      <!-- Address / Directions section -->
+      <div class="address-section" style="padding: 30px 24px;">
+        <div class="address-title" style="font-size: 1.2rem; font-weight: bold; margin-bottom: 24px; color: #ffeb99;">📍 Venue &amp; Directions</div>
+        <div class="address-steps" style="font-family: 'Playfair Display', serif; font-size: 1.4rem; line-height: 1.6;">
+
+          <div class="address-step" style="padding: 15px 20px; margin-bottom: 12px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.4);">
+            <span class="step-icon" style="font-size: 2.5rem; margin-right: 10px;">🚌</span>
+            <div class="step-text" style="font-size: 1.3rem;">
+              <strong style="color: #ffd700; font-size: 1.4rem; text-shadow: 0 0 10px rgba(255,215,0,0.8);">From Anywhere</strong><br/>
+              Board any bus heading to <strong style="color: #ffeb99;">Arigbajo Bus Stop</strong>,
+              <strong style="color: #ffffff;">Ifo, Ogun State</strong>
+            </div>
+          </div>
+
+          <div class="address-step" style="padding: 15px 20px; margin-bottom: 12px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.4);">
+            <span class="step-icon" style="font-size: 2.5rem; margin-right: 10px;">⬇️</span>
+            <div class="step-text" style="font-size: 1.3rem;">
+              Drop at <strong style="color: #ffffff;">Iyana Ejio</strong>
+            </div>
+          </div>
+
+          <div class="address-step" style="padding: 15px 20px; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,215,0,0.4);">
+            <span class="step-icon" style="font-size: 2.5rem; margin-right: 10px;">🏍️</span>
+            <div class="step-text" style="font-size: 1.3rem;">
+              Take a <em>bike (Okada)</em> straight to<br/>
+              <strong style="color: #ffeb99; font-size: 1.5rem; letter-spacing: 0.05em;">Double Crown Hotel</strong>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    <!-- Vendor section -->
+    <div class="vendor-section" style="padding: 24px 20px; background: linear-gradient(135deg, rgba(74,0,112,0.95) 0%, rgba(123,31,162,0.95) 50%, rgba(74,0,112,0.95) 100%);">
+      <p class="courtesy-label" style="font-size: 0.8rem; color: #ffd700; text-shadow: 0 0 5px rgba(255,215,0,0.6);">✦ Design &amp; Décor Courtesy of ✦</p>
+      <div class="vendor-badge" style="transform: scale(1.15); margin: 15px 0 20px; box-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 60px rgba(255,215,0,0.4), inset 0 2px 10px rgba(255,255,255,0.8); background: linear-gradient(135deg, #b8860b 0%, #ffd700 25%, #fff8dc 50%, #ffd700 75%, #b8860b 100%); border: 2px solid #fff;">
+        <div class="vendor-badge-inner" style="font-size: 1.3rem; color: #4a0000; text-shadow: 0 1px 1px rgba(255,255,255,0.9); font-weight: 900;">🌟 REAL CHASE VENDOR 🌟</div>
+      </div>
+      <div class="stars-row" style="font-size: 1.4rem; gap: 8px;">
+        <span class="star" style="color: #fff; text-shadow: 0 0 10px #ffd700;">★</span>
+        <span class="star" style="color: #fff; text-shadow: 0 0 10px #ffd700;">★</span>
+        <span class="star" style="color: #fff; text-shadow: 0 0 10px #ffd700;">★</span>
+        <span class="star" style="color: #fff; text-shadow: 0 0 10px #ffd700;">★</span>
+        <span class="star" style="color: #fff; text-shadow: 0 0 10px #ffd700;">★</span>
+      </div>
+      <p class="vendor-tagline" style="font-size: 1.05rem; letter-spacing: 0.15em;">Exclusively Designed &amp; Decorated by <strong style="color:#ffd700; font-size: 1.2rem; text-shadow: 0 0 8px rgba(255,215,0,1);">Real Chase Vendor</strong></p>
+    </div>
+
+  </div><!-- /card-content -->
+</div><!-- /card -->
+
+</body>
+</html>
